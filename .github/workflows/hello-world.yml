@@ -3,7 +3,7 @@ on:
   push
 jobs:
   build-test:
-    uses: dosky-dev/ghas_test/blob/dev/.github/workflows/baseflow.yml
+    uses: dosky-dev/ghas_test/blob/dev/.github/workflows/baseflow.yml@dev
     with:
       node-version: '18.x'
       OS: ubuntu-latest
