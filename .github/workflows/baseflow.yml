@@ -1,0 +1,36 @@
+name: base workflow
+on:
+    workflow_call:
+        inputs:
+            node-version:
+                description: The node version to use
+                required: true
+                type: string
+            OS:
+                description: Operating system for runner
+                required: true
+                type: string
+jobs:
+    build:
+        runs-on: ${{ inputs.OS}}
+        steps:
+        - name: Checkout code repository
+          uses: actions/checkout@v3
+        - name: use node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ inputs.node-version }}
+        - run: npm install
+        - run: npm run build
+    test:
+        needs: build
+        runs-on: ${{ inputs.OS}}
+        steps:
+        - name: Checkout code repository
+          uses: actions/checkout@v3
+        - name: uses node js
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ inputs.node-version }}
+        - run: npm install
+        - run: npm test
