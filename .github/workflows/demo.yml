@@ -1,0 +1,19 @@
+name: Secrets and variables demo
+run-name: ${{ gitbub.actor }} running secrets
+
+on: 
+  push:
+    branches:
+      main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MY_VARIABLE: "This is not a secret"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Echo environment variable
+        run: echo "My env variable is $MY_VARIABLE"
+      - name: Echo the org secret
+        run: echo "my GH secret is ${{ secrets.BASE_WORKFLOW}}"
