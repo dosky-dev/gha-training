@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MY_VARIABLE: "This is not a secret"
+      EVENT_CONTEXT ${{ toJSON(github.event)}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -17,3 +18,5 @@ jobs:
         run: echo "My env variable is $MY_VARIABLE"
       - name: Echo the org secret
         run: echo "my GH secret is ${{ secrets.BASE_WORKFLOW}}"
+      - name: Print out event trigger JSON payload
+        run: echo $EVENT_CONTEXT
