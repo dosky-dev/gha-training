@@ -1,5 +1,5 @@
 name: Secrets and variables demo
-run-name: ${{ gitbub.actor }} running secrets
+run-name: ${{ github.actor }} running secrets
 
 on: 
   push:
