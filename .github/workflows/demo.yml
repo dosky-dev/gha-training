@@ -4,7 +4,7 @@ run-name: ${{ gitbub.actor }} running secrets
 on: 
   push:
     branches:
-      main
+       - dev
 jobs:
   build:
     runs-on: ubuntu-latest
