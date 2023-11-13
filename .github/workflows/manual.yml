@@ -1,0 +1,11 @@
+name: Manual workflow trigger
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout code repository
+       uses: actions/checkout@v4
+     - name: Run a print out script
+       run: |
+          echo "Just so that you may know me"
