@@ -1,5 +1,8 @@
 name: Manual workflow trigger
-on: workflow_dispatch
+on: 
+  label:
+    type:
+      - created
 jobs:
   build:
     runs-on: ubuntu-latest
